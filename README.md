@@ -24,8 +24,14 @@ File demo
 src/middleware.ts
 ```
 
-Functions important
+## Handle cookie
 
-| No  | Property         | Description                      |
-| --- | -----------------| -------------------------------- |
-|  1  | middleware       | Get params **request** is request of page |
+In project, the cookie has been used to save **access_token** authorize when login. 
+
+## Set cookie
+```
+export const setAuthToCookie = (token: any) => {
+  // Set the token in a cookie
+  Cookies.set("token", token, { expires: 1 / 720, path: "/" }); // expire = 2p
+};
+```
