@@ -8,4 +8,11 @@ const responseCode = {
   FORBIDDEN: 403,
 };
 
-export default responseCode;
+const statusCode = {
+  fail: [0]
+}
+
+export default {
+  responseCode,
+  statusCode,
+};

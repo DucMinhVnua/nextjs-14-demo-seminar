@@ -1,7 +1,7 @@
 import axios from "axios";
-import Paths from "@/constants/paths";
-import { getTokenFromStorage } from "@/utils/utils.auth";
-import responseCode from "@/constants/code";
+import { getTokenFromStorage, removeAuthCookie } from "@/utils/utils.auth";
+import code from "@/constants/code";
+import { LOGIN_PATH } from "@/app/login/page";
 
 export const axiosInstance: any = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/`,
@@ -28,13 +28,14 @@ axiosInstance.interceptors.response.use(
   (response: any) => {
     const { data } = response;
     if (
-      data?.code == responseCode.UNAUTHORIZED ||
-      data?.code == responseCode.FORBIDDEN
+      data?.code == code.responseCode.UNAUTHORIZED ||
+      data?.code == code.responseCode.FORBIDDEN
     ) {
       if (localStorage) {
         localStorage?.clear();
+        removeAuthCookie();
       }
-      window.location.href = Paths.login;
+      window.location.href = LOGIN_PATH;
     } else {
       return response.data;
     }

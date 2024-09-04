@@ -1,0 +1,23 @@
+$text-color1: #333;
+
+.todoList {
+  margin: 1rem 0 0 1rem;
+  color: $text-color1;
+  font-size: 0.75rem;
+
+  & > ol {
+    li {
+      list-style-type: -roman;
+    }
+  }
+}
+
+.form {
+  &_item {
+    & > input {
+    }
+  }
+
+  & > button {
+  }
+}

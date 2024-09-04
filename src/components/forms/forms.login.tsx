@@ -4,8 +4,10 @@ import React from "react";
 import Input from "../fields/fields.input";
 import { loginAPI } from "@/api/api.auth";
 import { pushAuthDataToStorage, setAuthToCookie } from "@/utils/utils.auth";
-import { useRouter } from "next/navigation";
-import Paths from "@/constants/paths";
+import code from "@/constants/code";
+import { notification } from "antd";
+import useNavigate from "@/hooks/useNavigate";
+import { HOME_PATH } from "@/app/page";
 
 const inputStyle = "mb-[10px] rounded-[2px] h-[40px] px-[8px] text-[#000]";
 const inputOption = (props: { placeholder: string; name: string }) => {
@@ -16,7 +18,7 @@ const inputOption = (props: { placeholder: string; name: string }) => {
 };
 
 export default function FormLogin() {
-  const router = useRouter();
+  const { navigate } = useNavigate();
 
   const onSubmit = (event: any) => {
     event.preventDefault();
@@ -34,11 +36,18 @@ export default function FormLogin() {
 
     loginAPI(data)
       .then((res) => {
+        if (!res.data && code.statusCode.fail.includes(res.status)) {
+          throw new Error(res.message);
+        }
         setAuthToCookie(res.data.access_token);
       })
-      .catch((e) => {})
+      .catch((e) => {
+        notification.error({
+          message: e.message,
+        });
+      })
       .finally(() => {
-        router.replace(Paths.home);
+        navigate("replace", HOME_PATH);
       });
   };
 

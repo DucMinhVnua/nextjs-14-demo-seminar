@@ -1,7 +1,8 @@
-import Paths from "@/constants/paths";
 import { NextRequest, NextResponse } from "next/server";
+import { LOGIN_PATH } from "./app/login/page";
+import { HOME_PATH } from "./app/page";
 
-const pageInaccessible = [Paths.login];
+const pageInaccessible = [LOGIN_PATH];
 
 const validatePagesExistCookies = (authenticated: any, pathname: string) => {
   if (authenticated && pageInaccessible.includes(pathname)) {
@@ -16,14 +17,14 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   if (validatePagesExistCookies(authenticated, pathname)) {
-    return NextResponse.redirect(new URL(Paths.home, request.url));
+    return NextResponse.redirect(new URL(HOME_PATH, request.url));
   }
 
-  if (authenticated || pathname === Paths.login) {
+  if (authenticated || pathname === LOGIN_PATH) {
     return NextResponse.next();
   }
 
-  return NextResponse.redirect(new URL(Paths.login, request.url));
+  return NextResponse.redirect(new URL(LOGIN_PATH, request.url));
 }
 
 export const config = {
