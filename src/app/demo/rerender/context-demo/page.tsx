@@ -1,10 +1,10 @@
 "use client";
 
-import TodoList from "@/app/demo/rerender/context-demo/components/TodoContext";
-import TodoForm from "@/app/demo/rerender/context-demo/components/TodoContext/todos.form";
 import UnrelatedComponent from "@/components/ui/UnrelatedComponent";
 import { TodoProvider } from "./context/context.todos";
 import styles from "./styles.module.scss";
+import TodoForm from "./components/TodoContext/todos.form";
+import TodoList from "./components/TodoContext";
 
 export const CONTEXT_DEMO_PATH = "/demo/rerender/context-demo";
 

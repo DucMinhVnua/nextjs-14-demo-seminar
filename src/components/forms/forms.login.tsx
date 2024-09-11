@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
-import Input from "../fields/fields.input";
 import { loginAPI } from "@/api/api.auth";
-import { pushAuthDataToStorage, setAuthToCookie } from "@/utils/utils.auth";
-import code from "@/constants/code";
-import { notification } from "antd";
-import useNavigate from "@/hooks/useNavigate";
 import { HOME_PATH } from "@/app/page";
+import code from "@/constants/code";
+import useNavigate from "@/hooks/useNavigate";
+import { setAuthToCookie } from "@/utils/utils.auth";
+import { notification } from "antd";
+import Input from "../fields/fields.input";
 
 const inputStyle = "mb-[10px] rounded-[2px] h-[40px] px-[8px] text-[#000]";
 const inputOption = (props: { placeholder: string; name: string }) => {

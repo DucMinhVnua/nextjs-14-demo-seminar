@@ -18,7 +18,7 @@ const TodoContext = createContext<
   | null
 >(null);
 
-export const TodoProvider = ({ children }) => {
+export const TodoProvider = ({ children }: any) => {
   const [count, setCount] = useState(0);
   const [todos, setTodos] = useState<Todo[]>([]);
   const [form] = useForm();

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AuthType, EmailType, PasswordType } from "./type/type.states";
+import { AuthType, EmailType, PasswordType } from "./types/types.states";
 import { flushSync } from "react-dom";
 
 const data = {
@@ -9,7 +9,7 @@ const data = {
   password: "123456",
 };
 
-function UpdateStateDemoPage() {
+function UpdateStateDemo() {
   const [email, setEmail] = useState<EmailType>("");
   const [password, setPassword] = useState<PasswordType>("");
   const [auth, setAuth] = useState<AuthType>({
@@ -36,7 +36,7 @@ function UpdateStateDemoPage() {
     });
   };
 
-  console.log("UpdateStateDemoPage re-rendered");
+  console.log("UpdateStateDemo re-rendered");
 
   return (
     <div>
@@ -47,4 +47,4 @@ function UpdateStateDemoPage() {
   );
 }
 
-export default UpdateStateDemoPage;
+export default UpdateStateDemo;

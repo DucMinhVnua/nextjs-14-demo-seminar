@@ -1,7 +1,7 @@
 "use client";
 
 import useNavigate from "@/hooks/useNavigate";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { dataBtns } from "./data";
 import { renderButtons } from "./demo/rerender/page";
 
@@ -11,6 +11,12 @@ export const HOME_PATH = "/";
 
 export default function HomePage() {
   const { navigate } = useNavigate();
+
+  useEffect(() => {
+    window.addEventListener("keydown", (event) => {
+      console.log({ event });
+    });
+  }, []);
 
   return (
     <main className="min-h-full">

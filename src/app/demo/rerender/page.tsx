@@ -24,7 +24,7 @@ function RenderPage() {
   return (
     <main>
       {dataBtns.map(({ path, title }, index) => (
-        <Fragment key={index}> {renderButtons(path, title, navigate)}</Fragment>
+        <div key={index}> {renderButtons(path, title, navigate)}</div>
       ))}
     </main>
   );
